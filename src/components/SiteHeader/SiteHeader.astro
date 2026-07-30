@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import global from '../../content/global.json';
+import content from './content.json';
+import Navigation from '../Navigation/Navigation.astro';
+import { getAssetByPath } from '../../utils/getAssetByPath';
+import './SiteHeader.css';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+const logo = getAssetByPath(global.logo.path);
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/" aria-label={content.homeLabel}>
+      <Image src={logo} alt="" width={260} height={32} />
+    </a>
+    <Navigation currentPath={currentPath} />
+  </div>
+</header>

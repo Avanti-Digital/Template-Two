@@ -1,0 +1,42 @@
+.theme-control {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.theme-control__current {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.theme-control__current span {
+  color: var(--color-ink);
+}
+
+.theme-control__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+}
+
+.theme-control button {
+  padding: 0 0 0.2rem;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: transparent;
+  color: var(--color-ink);
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: color var(--transition-fast), opacity var(--transition-fast);
+}
+
+.theme-control button:hover {
+  color: var(--color-accent);
+}
+
+.theme-control button:disabled {
+  cursor: default;
+  opacity: 0.38;
+}

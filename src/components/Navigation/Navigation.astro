@@ -1,0 +1,63 @@
+---
+import content from './content.json';
+import global from '../../content/global.json';
+import './Navigation.css';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+const isCurrent = (href: string) =>
+  href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+---
+
+<nav class="navigation" aria-label={content.navigationLabel}>
+  <button class="navigation__toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+    <span class="navigation__open-label">{content.menuLabel}</span>
+    <span class="navigation__close-label">{content.closeLabel}</span>
+  </button>
+  <ul class="navigation__list" id="site-menu">
+    {global.navigation.map((item) => (
+      <li>
+        <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+          {item.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script>
+  const setupNavigation = () => {
+    document.querySelectorAll<HTMLElement>('.navigation:not([data-ready])').forEach((navigation) => {
+      navigation.dataset.ready = 'true';
+      const toggle = navigation.querySelector<HTMLButtonElement>('.navigation__toggle');
+      const list = navigation.querySelector<HTMLElement>('.navigation__list');
+      if (!toggle || !list) return;
+
+      const close = () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+      };
+
+      toggle.addEventListener('click', () => {
+        const willOpen = toggle.getAttribute('aria-expanded') !== 'true';
+        toggle.setAttribute('aria-expanded', String(willOpen));
+        document.body.classList.toggle('menu-open', willOpen);
+        if (willOpen) list.querySelector<HTMLAnchorElement>('a')?.focus();
+      });
+      list.addEventListener('click', (event) => {
+        if ((event.target as HTMLElement).closest('a')) close();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+          close();
+          toggle.focus();
+        }
+      });
+    });
+  };
+  setupNavigation();
+  document.addEventListener('astro:page-load', setupNavigation);
+</script>

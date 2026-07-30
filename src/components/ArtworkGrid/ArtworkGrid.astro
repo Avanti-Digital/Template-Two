@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import global from '../../content/global.json';
+import content from './content.json';
+import TextLink from '../TextLink/TextLink.astro';
+import { getAssetByPath } from '../../utils/getAssetByPath';
+import './ArtworkGrid.css';
+---
+
+<section class="artwork-grid">
+  <div class="artwork-grid__intro container">
+    <p class="eyebrow">{content.eyebrow}</p>
+    <h2 class="section-heading">{content.heading}</h2>
+    <p>{content.intro}</p>
+  </div>
+  <div class="artwork-grid__items container">
+    {global.artworks.map((artwork, index) => (
+      <article class:list={['artwork', index % 3 === 1 && 'artwork--wide']} id={artwork.slug}>
+        <div class="artwork__image">
+          <Image
+            src={getAssetByPath(artwork.image)}
+            alt={artwork.imageAlt}
+            widths={[420, 700, 1000, 1400]}
+            sizes={index % 3 === 1 ? '(min-width: 800px) 58vw, 100vw' : '(min-width: 800px) 36vw, 100vw'}
+            loading="lazy"
+          />
+        </div>
+        <div class="artwork__caption">
+          <div>
+            <p class="artwork__sample">{content.sampleLabel}</p>
+            <h3>{artwork.title}</h3>
+            <p>{artwork.year}<br />{artwork.medium}<br />{artwork.dimensions}</p>
+          </div>
+          <TextLink href={`/contact/?work=${artwork.slug}`} label={content.inquiryLabel} />
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

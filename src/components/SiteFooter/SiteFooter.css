@@ -1,0 +1,110 @@
+.site-footer {
+  padding-block: clamp(4rem, 8vw, 7rem) 1.5rem;
+  border-top: 1px solid var(--color-line);
+  background: var(--color-surface);
+}
+
+.site-footer__inner {
+  width: min(100%, var(--content-width));
+  padding-inline: var(--gutter);
+  margin-inline: auto;
+}
+
+.site-footer__lead {
+  display: grid;
+  grid-template-columns: minmax(10rem, 1fr) 2fr;
+  gap: 2rem;
+  padding-bottom: clamp(4rem, 9vw, 8rem);
+}
+
+.site-footer__heading {
+  max-width: 14ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5vw, 5rem);
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+}
+
+.site-footer__details,
+.site-footer__utility {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  padding-block: 2rem;
+  border-top: 1px solid var(--color-line);
+  font-size: 0.92rem;
+}
+
+.site-footer__details p {
+  margin: 0;
+}
+
+.site-footer__details a,
+.site-footer__utility a {
+  text-decoration: none;
+}
+
+.site-footer__details a:hover,
+.site-footer__utility a:hover {
+  color: var(--color-accent);
+}
+
+.site-footer__label {
+  margin-bottom: 0.7rem !important;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.site-footer__social {
+  display: block;
+  width: fit-content;
+}
+
+.site-footer__utility {
+  grid-template-columns: 2fr 1fr;
+}
+
+.site-footer__utility nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: start;
+  gap: 0.75rem 1.4rem;
+}
+
+.site-footer__utility [aria-current="page"] {
+  text-decoration: underline;
+}
+
+.site-footer__base {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-muted);
+  font-size: 0.72rem;
+}
+
+.site-footer__base p {
+  margin: 0;
+}
+
+@media (max-width: 46rem) {
+  .site-footer__lead,
+  .site-footer__details,
+  .site-footer__utility {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer__details > div {
+    min-height: 4rem;
+  }
+
+  .site-footer__base {
+    display: grid;
+  }
+}

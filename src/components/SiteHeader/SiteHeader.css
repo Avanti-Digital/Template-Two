@@ -1,0 +1,29 @@
+.site-header {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-line) 72%, transparent);
+  background: color-mix(in srgb, var(--color-canvas) 92%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(100%, var(--content-width));
+  min-height: clamp(4.25rem, 6.5vw, 5.5rem);
+  padding-inline: var(--gutter);
+  margin-inline: auto;
+}
+
+.site-header__logo {
+  position: relative;
+  z-index: 2;
+  width: clamp(10rem, 16vw, 13.5rem);
+}
+
+.site-header__logo img {
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,179 @@
+.page-hero {
+  padding-block: clamp(4rem, 9vw, 9rem);
+}
+
+.page-hero__grid {
+  display: grid;
+  grid-template-columns: 0.6fr 1.4fr 0.8fr;
+  gap: clamp(1.5rem, 5vw, 5rem);
+}
+
+.page-hero__intro {
+  align-self: end;
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.studio-profile {
+  padding-bottom: var(--space-section);
+}
+
+.studio-profile__portrait {
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  align-items: end;
+  gap: clamp(2rem, 8vw, 9rem);
+}
+
+.studio-profile__portrait figure {
+  margin: 0;
+}
+
+.studio-profile__portrait img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.studio-profile__caption {
+  max-width: 34rem;
+  padding-bottom: 2rem;
+}
+
+.studio-profile__caption .lede {
+  margin-bottom: 2rem;
+}
+
+.studio-profile__caption p:last-child {
+  color: var(--color-muted);
+}
+
+.practice {
+  display: grid;
+  grid-template-columns: 0.6fr 1.4fr 0.8fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  padding-block: var(--space-section);
+  border-block: 1px solid var(--color-line);
+}
+
+.practice__copy p {
+  max-width: 40rem;
+  margin: 0 0 1.4rem;
+}
+
+.practice__disciplines h3,
+.visit-grid h3 {
+  margin: 0 0 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.practice__disciplines ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.practice__disciplines li {
+  padding-block: 0.65rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: clamp(2rem, 8vw, 9rem);
+  padding-block: var(--space-section);
+}
+
+.visit-grid__image img {
+  width: 100%;
+  aspect-ratio: 7 / 5;
+  object-fit: cover;
+}
+
+.visit-grid__details {
+  align-self: end;
+}
+
+.visit-grid__details p {
+  margin: 0 0 1.5rem;
+}
+
+.contact-page {
+  padding-bottom: var(--space-section);
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  gap: clamp(3rem, 8vw, 9rem);
+}
+
+.contact-details {
+  display: grid;
+  align-content: start;
+  gap: 3rem;
+  padding-top: 1rem;
+}
+
+.contact-details h2 {
+  margin: 0 0 0.8rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact-details p {
+  margin: 0;
+}
+
+.contact-details a {
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  color: var(--color-accent);
+}
+
+.contact-details__note {
+  max-width: 24rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.contact-cta {
+  padding-block: var(--space-section);
+  text-align: left;
+}
+
+.contact-cta__inner {
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr;
+  align-items: end;
+  gap: 3rem;
+}
+
+.contact-cta h2 {
+  max-width: 15ch;
+}
+
+@media (max-width: 52rem) {
+  .page-hero__grid,
+  .studio-profile__portrait,
+  .practice,
+  .visit-grid,
+  .contact-layout,
+  .contact-cta__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .studio-profile__portrait figure {
+    max-width: 36rem;
+  }
+
+  .practice__disciplines {
+    margin-top: 2rem;
+  }
+}

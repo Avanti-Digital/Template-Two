@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import content from './content.json';
+import global from '../../content/global.json';
+import TextLink from '../TextLink/TextLink.astro';
+import { getAssetByPath } from '../../utils/getAssetByPath';
+import './StudioStatement.css';
+---
+
+<section class="statement">
+  <div class="statement__inner container">
+    <div class="statement__copy">
+      <p class="eyebrow">{content.eyebrow}</p>
+      <h2 class="section-heading">{content.heading}</h2>
+      <p class="statement__lead">{content.statement}</p>
+      <p class="statement__secondary">{content.secondary}</p>
+      <TextLink href="/studio/" label={content.ctaLabel} />
+    </div>
+    <div class="statement__image">
+      <Image
+        src={getAssetByPath(global.images.studioInterior)}
+        alt="Quiet art studio interior with a large ochre painting, worktable, and angled daylight"
+        widths={[600, 900, 1200]}
+        sizes="(min-width: 800px) 48vw, 100vw"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>

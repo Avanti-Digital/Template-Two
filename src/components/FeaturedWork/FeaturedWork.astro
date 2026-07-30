@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import global from '../../content/global.json';
+import content from './content.json';
+import TextLink from '../TextLink/TextLink.astro';
+import { getAssetByPath } from '../../utils/getAssetByPath';
+import './FeaturedWork.css';
+
+const works = global.artworks.filter((artwork) => artwork.featured);
+---
+
+<section class="featured">
+  <div class="featured__header container">
+    <div>
+      <p class="eyebrow">{content.eyebrow}</p>
+      <h2 class="section-heading">{content.heading}</h2>
+    </div>
+    <div class="featured__intro">
+      <p>{content.description}</p>
+      <TextLink href="/work/" label={content.ctaLabel} />
+    </div>
+  </div>
+
+  <div class="featured__grid container">
+    {works.map((artwork, index) => (
+      <article class:list={['featured__item', `featured__item--${index + 1}`]}>
+        <a href={`/work/#${artwork.slug}`} aria-label={`${artwork.title}, ${artwork.year}`}>
+          <div class="featured__image-frame">
+            <Image
+              src={getAssetByPath(artwork.image)}
+              alt={artwork.imageAlt}
+              widths={[480, 720, 960, 1280]}
+              sizes={index === 1 ? '(min-width: 800px) 58vw, 100vw' : '(min-width: 800px) 34vw, 100vw'}
+              loading="lazy"
+            />
+          </div>
+          <div class="featured__meta">
+            <h3>{artwork.title}</h3>
+            <p>{artwork.year} · {artwork.medium}</p>
+            <span>{content.sampleLabel}</span>
+          </div>
+        </a>
+      </article>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,16 @@
+---
+import './PrimaryButton.css';
+
+interface Props {
+  href: string;
+  label: string;
+  variant?: 'filled' | 'outline';
+}
+
+const { href, label, variant = 'filled' } = Astro.props;
+---
+
+<a class:list={['primary-button', `primary-button--${variant}`]} href={href}>
+  <span>{label}</span>
+  <span aria-hidden="true">↗</span>
+</a>

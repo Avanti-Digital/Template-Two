@@ -1,0 +1,74 @@
+---
+import { Image } from 'astro:assets';
+import PageLayout from '../layouts/PageLayout.astro';
+import TextLink from '../components/TextLink/TextLink.astro';
+import global from '../content/global.json';
+import { getAssetByPath } from '../utils/getAssetByPath';
+import '../styles/pages.css';
+---
+
+<PageLayout title={global.seo.studio.title} description={global.seo.studio.description}>
+  <header class="page-hero">
+    <div class="page-hero__grid container">
+      <p class="eyebrow">Studio & practice</p>
+      <h1 class="page-heading">Work begins with looking.</h1>
+      <p class="page-hero__intro">A material-led practice in Salt Lake City, attentive to the quiet structures of landscape and daily life.</p>
+    </div>
+  </header>
+
+  <section class="studio-profile container" aria-labelledby="studio-biography">
+    <div class="studio-profile__portrait">
+      <figure>
+        <Image
+          src={getAssetByPath(global.images.artistPortrait)}
+          alt="Stylized studio portrait of an artist standing before a warm neutral wall"
+          widths={[480, 720, 960]}
+          sizes="(min-width: 800px) 38vw, 100vw"
+          loading="eager"
+        />
+      </figure>
+      <div class="studio-profile__caption">
+        <p class="eyebrow">Biography</p>
+        <h2 class="lede" id="studio-biography">Northline Studio is an independent contemporary art practice based along the Wasatch Front.</h2>
+        <p>The studio’s work moves between painting, drawing, and small spatial studies. Each piece develops through repeated attention: a mark added, a surface interrupted, a composition reduced to what it needs.</p>
+        <p>This biography is intentionally concise and avoids invented exhibitions, awards, or representation. Replace it with the artist’s verified background when available.</p>
+      </div>
+    </div>
+
+    <section class="practice" aria-labelledby="practice-heading">
+      <p class="eyebrow">Approach</p>
+      <div class="practice__copy">
+        <h2 class="section-heading" id="practice-heading">A practice of revision.</h2>
+        <p class="lede">The work holds traces of its making rather than hiding them.</p>
+        <p>Natural pigment, graphite, oil, linen, and paper create a vocabulary of weight and transparency. Compositions are built gradually and edited with equal care. The finished object remains open, carrying both what is present and what has been removed.</p>
+      </div>
+      <div class="practice__disciplines">
+        <h3>Selected disciplines</h3>
+        <ul>
+          <li>Painting</li>
+          <li>Works on paper</li>
+          <li>Material studies</li>
+          <li>Creative direction</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="visit-grid" aria-labelledby="visit-heading">
+      <div class="visit-grid__image">
+        <Image
+          src={getAssetByPath(global.images.studioInterior)}
+          alt="Quiet art studio interior with a large ochre painting, worktable, and angled daylight"
+          widths={[640, 960, 1400]}
+          sizes="(min-width: 800px) 62vw, 100vw"
+          loading="lazy"
+        />
+      </div>
+      <div class="visit-grid__details">
+        <p class="eyebrow">Studio visits</p>
+        <h2 class="section-heading" id="visit-heading">Come see the work in person.</h2>
+        <p>{global.appointment.detail}<br />{global.appointment.hours}<br />{global.studio.location}</p>
+        <TextLink href="/contact/" label="Arrange a visit" />
+      </div>
+    </section>
+  </section>
+</PageLayout>

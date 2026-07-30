@@ -1,0 +1,26 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection/HeroSection.astro';
+import FeaturedWork from '../components/FeaturedWork/FeaturedWork.astro';
+import StudioStatement from '../components/StudioStatement/StudioStatement.astro';
+import ExhibitionSection from '../components/ExhibitionSection/ExhibitionSection.astro';
+import PrimaryButton from '../components/PrimaryButton/PrimaryButton.astro';
+import global from '../content/global.json';
+import '../styles/pages.css';
+---
+
+<PageLayout title={global.seo.home.title} description={global.seo.home.description}>
+  <HeroSection />
+  <FeaturedWork />
+  <StudioStatement />
+  <ExhibitionSection />
+  <section class="contact-cta">
+    <div class="contact-cta__inner container">
+      <div>
+        <p class="eyebrow">Begin a conversation</p>
+        <h2 class="section-heading">For available work, visits, and thoughtful inquiries.</h2>
+      </div>
+      <PrimaryButton href="/contact/" label="Contact the studio" variant="outline" />
+    </div>
+  </section>
+</PageLayout>

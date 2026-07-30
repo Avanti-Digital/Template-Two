@@ -1,0 +1,116 @@
+{
+  "studio": {
+    "name": "Northline Studio",
+    "descriptor": "Contemporary Art & Creative Practice",
+    "location": "Salt Lake City, Utah",
+    "email": "studio@northline.art",
+    "phone": "(801) 555-0148",
+    "phoneHref": "+18015550148",
+    "primaryCta": "View the Work",
+    "secondaryCta": "Visit the Studio"
+  },
+  "logo": {
+    "path": "brand/logo.svg",
+    "alt": "Northline Studio"
+  },
+  "navigation": [
+    { "label": "Home", "href": "/" },
+    { "label": "Studio", "href": "/studio/" },
+    { "label": "Contact", "href": "/contact/" }
+  ],
+  "seo": {
+    "home": {
+      "title": "Northline Studio — Contemporary Art in Salt Lake City",
+      "description": "Northline Studio is a contemporary art and creative practice in Salt Lake City, Utah, focused on material, light, and place."
+    },
+    "work": {
+      "title": "Selected Work — Northline Studio",
+      "description": "Explore an editable sample collection of paintings and works on paper from Northline Studio."
+    },
+    "studio": {
+      "title": "Studio & Practice — Northline Studio",
+      "description": "Learn about the quiet, material-led creative practice of Northline Studio in Salt Lake City."
+    },
+    "contact": {
+      "title": "Contact & Studio Visits — Northline Studio",
+      "description": "Contact Northline Studio about available work, creative inquiries, or an appointment to visit the Salt Lake City studio."
+    }
+  },
+  "social": [
+    { "label": "Instagram", "href": "https://www.instagram.com/" },
+    { "label": "Are.na", "href": "https://www.are.na/" }
+  ],
+  "appointment": {
+    "label": "Studio visits",
+    "detail": "By appointment, Tuesday–Saturday",
+    "hours": "10:00 AM–5:00 PM"
+  },
+  "images": {
+    "hero": "hero/studio-hero.svg",
+    "artistPortrait": "studio/artist-portrait.svg",
+    "studioInterior": "studio/studio-interior.svg",
+    "openGraph": "hero/studio-hero.svg"
+  },
+  "artworks": [
+    {
+      "slug": "quiet-interval",
+      "title": "Quiet Interval",
+      "year": "2026",
+      "medium": "Oil and graphite on linen",
+      "dimensions": "36 × 48 in",
+      "image": "artworks/artwork-01.svg",
+      "imageAlt": "Abstract graphite lines crossing a pale ochre painted field",
+      "featured": true
+    },
+    {
+      "slug": "north-window",
+      "title": "North Window",
+      "year": "2026",
+      "medium": "Pigment and wax on panel",
+      "dimensions": "30 × 40 in",
+      "image": "artworks/artwork-02.svg",
+      "imageAlt": "Deep blue vertical forms interrupted by a narrow band of warm white",
+      "featured": true
+    },
+    {
+      "slug": "held-light",
+      "title": "Held Light",
+      "year": "2025",
+      "medium": "Oil on linen",
+      "dimensions": "48 × 60 in",
+      "image": "artworks/artwork-03.svg",
+      "imageAlt": "Soft cream and rust color fields meeting along an uneven horizon",
+      "featured": true
+    },
+    {
+      "slug": "after-weather",
+      "title": "After Weather",
+      "year": "2025",
+      "medium": "Graphite, gesso, and ash on paper",
+      "dimensions": "22 × 30 in",
+      "image": "artworks/artwork-04.svg",
+      "imageAlt": "Layered charcoal marks drifting across a cool gray ground",
+      "featured": false
+    },
+    {
+      "slug": "field-note-v",
+      "title": "Field Note V",
+      "year": "2025",
+      "medium": "Natural pigment on paper",
+      "dimensions": "18 × 24 in",
+      "image": "artworks/artwork-05.svg",
+      "imageAlt": "Moss green geometric shapes arranged on handmade cream paper",
+      "featured": false
+    },
+    {
+      "slug": "redaction",
+      "title": "Redaction",
+      "year": "2024",
+      "medium": "Oil stick and ink on linen",
+      "dimensions": "40 × 32 in",
+      "image": "artworks/artwork-06.svg",
+      "imageAlt": "Dark horizontal marks layered over a muted clay-red field",
+      "featured": false
+    }
+  ]
+}

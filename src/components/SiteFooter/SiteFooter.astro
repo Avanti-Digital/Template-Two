@@ -1,0 +1,53 @@
+---
+import global from '../../content/global.json';
+import content from './content.json';
+import ThemeRandomizer from '../ThemeRandomizer/ThemeRandomizer.astro';
+import './SiteFooter.css';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__lead">
+      <p class="eyebrow">{global.studio.descriptor}</p>
+      <p class="site-footer__heading">{content.heading}</p>
+    </div>
+
+    <div class="site-footer__details">
+      <div>
+        <p class="site-footer__label">{content.inquiryLabel}</p>
+        <a href={`mailto:${global.studio.email}`}>{global.studio.email}</a><br />
+        <a href={`tel:${global.studio.phoneHref}`}>{global.studio.phone}</a>
+      </div>
+      <div>
+        <p class="site-footer__label">{content.locationLabel}</p>
+        <p>{global.studio.location}<br />{global.appointment.detail}</p>
+      </div>
+      <div>
+        <p class="site-footer__label">{content.followLabel}</p>
+        {global.social.map((profile) => <a class="site-footer__social" href={profile.href}>{profile.label}</a>)}
+      </div>
+    </div>
+
+    <div class="site-footer__utility">
+      <nav aria-label="Footer navigation">
+        <a href="/work/" aria-current={currentPath.startsWith('/work') ? 'page' : undefined}>Work</a>
+        {global.navigation.map((item) => (
+          <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>
+        ))}
+      </nav>
+      <ThemeRandomizer />
+    </div>
+
+    <div class="site-footer__base">
+      <p>© {year} {content.copyrightSuffix}</p>
+      <p>{content.sampleNotice}</p>
+    </div>
+  </div>
+</footer>

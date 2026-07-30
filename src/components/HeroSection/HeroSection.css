@@ -1,0 +1,115 @@
+.hero {
+  padding-top: clamp(2rem, 5vw, 5rem);
+}
+
+.hero__mast {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: end;
+  gap: 1.5rem;
+}
+
+.hero__mast .display {
+  grid-column: 1 / -1;
+}
+
+.hero__descriptor {
+  grid-column: 2;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero__image-wrap {
+  position: relative;
+  width: min(calc(100% - 2 * var(--gutter)), 106rem);
+  height: clamp(28rem, 68vw, 60rem);
+  margin: clamp(2.5rem, 6vw, 6rem) auto 0;
+  overflow: hidden;
+  background: var(--color-line);
+}
+
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 48%;
+  transition: transform 700ms ease;
+}
+
+.hero__image-wrap:hover .hero__image {
+  transform: scale(1.015);
+}
+
+.hero__caption {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  margin: 0;
+  padding: 0.35rem 0.5rem;
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  color: var(--color-ink);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero__outro {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(16rem, 1fr);
+  gap: clamp(2.5rem, 8vw, 9rem);
+  padding-block: var(--space-section);
+}
+
+.hero__outro h2 {
+  max-width: 11ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 6rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+
+.hero__copy {
+  align-self: end;
+}
+
+.hero__copy p {
+  margin: 0 0 2rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@media (max-width: 48rem) {
+  .hero__mast {
+    display: block;
+  }
+
+  .hero__mast .display {
+    margin-top: 1.5rem;
+  }
+
+  .hero__descriptor {
+    margin-top: 1.25rem;
+  }
+
+  .hero__image-wrap {
+    width: 100%;
+  }
+
+  .hero__outro {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__copy {
+    max-width: 30rem;
+  }
+}

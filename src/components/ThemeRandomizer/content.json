@@ -1,0 +1,7 @@
+{
+  "changeLabel": "Change palette",
+  "restoreLabel": "Restore default",
+  "currentLabel": "Current palette",
+  "statusPrefix": "Palette changed to",
+  "defaultName": "Warm Gallery"
+}

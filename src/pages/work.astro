@@ -1,0 +1,17 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import ArtworkGrid from '../components/ArtworkGrid/ArtworkGrid.astro';
+import global from '../content/global.json';
+import '../styles/pages.css';
+---
+
+<PageLayout title={global.seo.work.title} description={global.seo.work.description}>
+  <header class="page-hero">
+    <div class="page-hero__grid container">
+      <p class="eyebrow">Archive · 2024–2026</p>
+      <h1 class="page-heading">Selected work</h1>
+      <p class="page-hero__intro">Paintings, works on paper, and material studies. This collection is sample content, ready to be replaced with the studio’s own work.</p>
+    </div>
+  </header>
+  <ArtworkGrid />
+</PageLayout>

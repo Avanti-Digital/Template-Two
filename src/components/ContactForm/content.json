@@ -1,0 +1,15 @@
+{
+  "heading": "Send an inquiry",
+  "nameLabel": "Name",
+  "emailLabel": "Email",
+  "typeLabel": "Inquiry type",
+  "typePlaceholder": "Choose one",
+  "types": ["Available work", "Studio visit", "Creative inquiry", "General note"],
+  "messageLabel": "Message",
+  "namePlaceholder": "Your name",
+  "emailPlaceholder": "you@example.com",
+  "messagePlaceholder": "Tell us what you would like to discuss.",
+  "submitLabel": "Prepare inquiry",
+  "notice": "This preview form does not send messages yet. Configure the action value in ContactForm.astro before publishing.",
+  "announcement": "Your email application will open with this inquiry. You can review it before sending."
+}

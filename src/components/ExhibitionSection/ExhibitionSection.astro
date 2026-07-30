@@ -1,0 +1,21 @@
+---
+import content from './content.json';
+import TextLink from '../TextLink/TextLink.astro';
+import './ExhibitionSection.css';
+---
+
+<section class="exhibition">
+  <div class="exhibition__inner container">
+    <p class="eyebrow">{content.eyebrow}</p>
+    <div class="exhibition__main">
+      <p class="exhibition__status">{content.status}</p>
+      <h2>{content.heading}</h2>
+    </div>
+    <div class="exhibition__details">
+      <p class="exhibition__date">{content.date}</p>
+      <p>{content.description}</p>
+      <TextLink href="/contact/" label={content.ctaLabel} />
+      <p class="exhibition__notice">{content.notice}</p>
+    </div>
+  </div>
+</section>

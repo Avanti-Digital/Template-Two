@@ -1,0 +1,57 @@
+---
+import global from '../../content/global.json';
+import content from './content.json';
+import './ContactForm.css';
+
+// Replace this mailto behavior with a secure form endpoint when one is available.
+---
+
+<section class="contact-form" aria-labelledby="inquiry-form-heading">
+  <h2 id="inquiry-form-heading">{content.heading}</h2>
+  <form data-contact-form>
+    <div class="contact-form__field">
+      <label for="name">{content.nameLabel}</label>
+      <input id="name" name="name" type="text" autocomplete="name" placeholder={content.namePlaceholder} required />
+    </div>
+    <div class="contact-form__field">
+      <label for="email">{content.emailLabel}</label>
+      <input id="email" name="email" type="email" autocomplete="email" placeholder={content.emailPlaceholder} required />
+    </div>
+    <div class="contact-form__field">
+      <label for="inquiry-type">{content.typeLabel}</label>
+      <select id="inquiry-type" name="inquiryType" required>
+        <option value="" selected disabled>{content.typePlaceholder}</option>
+        {content.types.map((type) => <option value={type}>{type}</option>)}
+      </select>
+    </div>
+    <div class="contact-form__field contact-form__field--full">
+      <label for="message">{content.messageLabel}</label>
+      <textarea id="message" name="message" rows="7" placeholder={content.messagePlaceholder} required></textarea>
+    </div>
+    <div class="contact-form__submit contact-form__field--full">
+      <button type="submit">{content.submitLabel}<span aria-hidden="true">↗</span></button>
+      <p>{content.notice}</p>
+    </div>
+    <p class="sr-only" aria-live="polite" data-form-status></p>
+  </form>
+</section>
+
+<script define:vars={{ email: global.studio.email, announcement: content.announcement }}>
+  const setupContactForms = () => {
+    document.querySelectorAll('[data-contact-form]:not([data-ready])').forEach((form) => {
+      form.dataset.ready = 'true';
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        const data = new FormData(form);
+        const subject = `Northline inquiry: ${data.get('inquiryType')}`;
+        const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
+        const status = form.querySelector('[data-form-status]');
+        if (status) status.textContent = announcement;
+        window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    });
+  };
+  setupContactForms();
+  document.addEventListener('astro:page-load', setupContactForms);
+</script>

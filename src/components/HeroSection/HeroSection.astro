@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import content from './content.json';
+import global from '../../content/global.json';
+import PrimaryButton from '../PrimaryButton/PrimaryButton.astro';
+import TextLink from '../TextLink/TextLink.astro';
+import { getAssetByPath } from '../../utils/getAssetByPath';
+import './HeroSection.css';
+
+const hero = getAssetByPath(global.images.hero);
+---
+
+<section class="hero">
+  <div class="hero__mast container">
+    <p class="eyebrow">{content.eyebrow}</p>
+    <h1 class="display">{global.studio.name}</h1>
+    <p class="hero__descriptor">{global.studio.descriptor}</p>
+  </div>
+
+  <div class="hero__image-wrap">
+    <Image
+      class="hero__image"
+      src={hero}
+      alt="Abstract studio composition with ochre, charcoal, cream, and clay-red forms"
+      width={1600}
+      height={1080}
+      loading="eager"
+      fetchpriority="high"
+    />
+    <p class="hero__caption">{content.imageCaption}</p>
+  </div>
+
+  <div class="hero__outro container">
+    <h2>{content.heading}</h2>
+    <div class="hero__copy">
+      <p>{content.intro}</p>
+      <div class="hero__actions">
+        <PrimaryButton href="/work/" label={global.studio.primaryCta} />
+        <TextLink href="/contact/" label={global.studio.secondaryCta} />
+      </div>
+    </div>
+  </div>
+</section>

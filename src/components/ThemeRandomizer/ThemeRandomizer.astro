@@ -1,0 +1,73 @@
+---
+import content from './content.json';
+import './ThemeRandomizer.css';
+---
+
+<div class="theme-control" data-theme-control>
+  <p class="theme-control__current">
+    {content.currentLabel}: <span data-palette-name>{content.defaultName}</span>
+  </p>
+  <div class="theme-control__actions">
+    <button type="button" data-change-palette aria-pressed="false">{content.changeLabel}</button>
+    <button type="button" data-restore-palette>{content.restoreLabel}</button>
+  </div>
+  <p class="sr-only" aria-live="polite" aria-atomic="true" data-theme-status></p>
+</div>
+
+<script define:vars={{ content }}>
+  const palettes = [
+    { name: 'Warm Gallery', values: { '--color-canvas': '#F3F0E9', '--color-surface': '#FCFBF7', '--color-ink': '#171714', '--color-muted': '#6D6A63', '--color-accent': '#A94C35', '--color-line': '#CBC7BC' } },
+    { name: 'Ink & Paper', values: { '--color-canvas': '#ECEBE7', '--color-surface': '#F8F7F3', '--color-ink': '#101113', '--color-muted': '#5E6062', '--color-accent': '#42464D', '--color-line': '#BFC0BC' } },
+    { name: 'Ultramarine', values: { '--color-canvas': '#F2F0E8', '--color-surface': '#FBFAF5', '--color-ink': '#141826', '--color-muted': '#5C6070', '--color-accent': '#2447A4', '--color-line': '#C6C6C0' } },
+    { name: 'Clay', values: { '--color-canvas': '#F1E9E1', '--color-surface': '#FBF7F2', '--color-ink': '#251A16', '--color-muted': '#695B55', '--color-accent': '#8D3E2E', '--color-line': '#C9B8AC' } },
+    { name: 'Moss', values: { '--color-canvas': '#EEEFE7', '--color-surface': '#F8F9F3', '--color-ink': '#172018', '--color-muted': '#5B655B', '--color-accent': '#3F6545', '--color-line': '#BEC5B9' } },
+  ];
+  const storageKey = 'northline-studio-theme';
+  const validKeys = ['--color-canvas', '--color-surface', '--color-ink', '--color-muted', '--color-accent', '--color-line'];
+
+  const isValid = (palette) =>
+    palette &&
+    palettes.some(({ name }) => name === palette.name) &&
+    palette.values &&
+    validKeys.every((key) => /^#[0-9a-fA-F]{6}$/.test(palette.values[key] || ''));
+
+  const setupThemeControls = () => {
+    document.querySelectorAll('[data-theme-control]:not([data-ready])').forEach((control) => {
+      control.dataset.ready = 'true';
+      const name = control.querySelector('[data-palette-name]');
+      const change = control.querySelector('[data-change-palette]');
+      const restore = control.querySelector('[data-restore-palette]');
+      const status = control.querySelector('[data-theme-status]');
+
+      let active = palettes[0];
+      try {
+        const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
+        if (isValid(saved)) active = saved;
+      } catch {}
+
+      const apply = (palette, announce = true) => {
+        active = palette;
+        validKeys.forEach((key) => document.documentElement.style.setProperty(key, palette.values[key]));
+        document.documentElement.dataset.palette = palette.name;
+        if (name) name.textContent = palette.name;
+        if (change) {
+          change.textContent = `${content.changeLabel}`;
+          change.setAttribute('aria-pressed', String(palette.name !== content.defaultName));
+        }
+        if (restore) restore.disabled = palette.name === content.defaultName;
+        if (announce && status) status.textContent = `${content.statusPrefix} ${palette.name}.`;
+        localStorage.setItem(storageKey, JSON.stringify(palette));
+      };
+
+      apply(active, false);
+      change?.addEventListener('click', () => {
+        const alternatives = palettes.filter(({ name }) => name !== active.name);
+        apply(alternatives[Math.floor(Math.random() * alternatives.length)]);
+      });
+      restore?.addEventListener('click', () => apply(palettes[0]));
+    });
+  };
+
+  setupThemeControls();
+  document.addEventListener('astro:page-load', setupThemeControls);
+</script>

@@ -1,0 +1,37 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import ContactForm from '../components/ContactForm/ContactForm.astro';
+import global from '../content/global.json';
+import '../styles/pages.css';
+---
+
+<PageLayout title={global.seo.contact.title} description={global.seo.contact.description}>
+  <header class="page-hero">
+    <div class="page-hero__grid container">
+      <p class="eyebrow">Contact</p>
+      <h1 class="page-heading">Start with a simple note.</h1>
+      <p class="page-hero__intro">For available work, studio visits, and considered creative inquiries.</p>
+    </div>
+  </header>
+
+  <div class="contact-page container">
+    <div class="contact-layout">
+      <aside class="contact-details" aria-label="Studio contact details">
+        <div>
+          <h2>Email</h2>
+          <p><a href={`mailto:${global.studio.email}`}>{global.studio.email}</a></p>
+        </div>
+        <div>
+          <h2>Phone</h2>
+          <p><a href={`tel:${global.studio.phoneHref}`}>{global.studio.phone}</a></p>
+        </div>
+        <div>
+          <h2>Studio</h2>
+          <p>{global.studio.location}<br />{global.appointment.detail}<br />{global.appointment.hours}</p>
+        </div>
+        <p class="contact-details__note">The precise studio address is shared when an appointment is confirmed.</p>
+      </aside>
+      <ContactForm />
+    </div>
+  </div>
+</PageLayout>
